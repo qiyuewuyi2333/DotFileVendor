@@ -1,0 +1,84 @@
+" ================================================================================================
+" 🌍🌍🌍 Plugins 🌍🌍🌍
+" ================================================================================================
+set keep-english-in-normal-and-restore-in-insert
+
+" ================================================================================================
+"  Basic settings 
+" ================================================================================================
+" 设置在光标距离窗口顶部或者底部一定行数时, 开始滚动屏幕
+set scrolloff=10
+
+" --递增搜索功能: 在执行搜索 (使用 / 或 ? 命令) 时,
+" Vim 会在输入搜索模式的过程中逐步匹配并高亮显示匹配的文本.
+set incsearch
+
+" --在搜索时忽略大小写
+set ignorecase
+
+" -- 将搜索匹配的文本高亮显示
+set hlsearch
+
+" --设置相对行号 和 当前行的绝对行号
+set number relativenumber
+
+" --设置返回normal模式时回到英文输入法
+set keep-english-in-normal
+
+" -- 共享剪贴板
+set clipboard^=unnamed,unnamedplus
+
+
+" ================================================================================================
+" 🌍🌍🌍 No Leader Keymaps 🌍🌍🌍
+" ================================================================================================
+
+" jk用于退出j 
+:inoremap jk <esc>
+map Q gq
+"跳转到下一个错误或警告
+nmap ge <action>(GotoNextError)
+"在源代码和测试代码之间快速切换
+nmap gt <action>(GotoTypeDeclaration)
+"将光标移动到上一个方法的声明处
+nmap gm <action>(MethodUp)
+" last changed in current buffer(file)
+"跳转到当前接口或抽象类的实现处
+nmap gd <action>(GotoDeclaration)
+"跳转到引用处
+nmap gr <action>(ShowUsages)
+"跳转到下一个错误或警告(在解决方案中)
+nmap ge <action>(ReSharperGotoNextErrorInSolution)
+"跳转到当前接口或抽象类的实现处
+nmap gi <action>(ReSharperGotoImplementation)
+"F1 for save all files
+nmap <F1> <action>(SaveAll)
+
+nmap <F2> <action>(PinActiveTab)
+
+" 切换标签页
+nmap L <action>(NextTab)
+nmap H <action>(PreviousTab)
+
+" 切换splitter
+nnoremap <C-h> <action>(NextSplitter)
+nnoremap <C-L> <action>(PrevSplitter)
+
+nnoremap <leader>q <Esc>
+
+
+" ⭐️⭐️⭐️ Leader Keymaps ⭐️⭐️⭐️ =====================================
+" ================================================================================================
+"--将<leader>设置为 空格 键
+let mapleader=" "
+
+nmap <leader>ff <action>(GotoFile)
+
+nmap <leader>fs <action>(FindInPath)
+
+nmap <leader>nh :nohlsearch<CR>
+ 
+nmap <leader>cf <action>(ReformatCode)
+nmap <leader>cd <action>(CppDocument)
+nmap <leader>cc <action>(CMake.ReloadCMakeProject)
+
