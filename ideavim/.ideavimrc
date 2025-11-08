@@ -82,3 +82,4 @@ nmap <leader>cf <action>(ReformatCode)
 nmap <leader>cd <action>(CppDocument)
 nmap <leader>cc <action>(CMake.ReloadCMakeProject)
 
+nnoremap <leader><leader> :action Switcher<CR>
