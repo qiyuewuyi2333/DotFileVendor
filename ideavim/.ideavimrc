@@ -51,7 +51,10 @@ nmap gr <action>(ShowUsages)
 "跳转到下一个错误或警告(在解决方案中)
 nmap ge <action>(ReSharperGotoNextErrorInSolution)
 "跳转到当前接口或抽象类的实现处
-nmap gi <action>(ReSharperGotoImplementation)
+nmap gi <action>(GotoImplementation)
+"跳转基类
+nmap gb <action>(GotoSuperMethod)
+
 "F1 for save all files
 nmap <F1> <action>(SaveAll)
 
@@ -81,6 +84,7 @@ nmap <leader>nh :nohlsearch<CR>
  
 nmap <leader>cf <action>(ReformatCode)
 nmap <leader>cd <action>(CppDocument)
-nmap <leader>cc <action>(CMake.ReloadCMakeProject)
+nmap <leader>cr <action>(CMake.ReloadCMakeProject)
+nmap <leader>cb <action>(BuildProject)
 
 nnoremap <leader><leader> :action Switcher<CR>
