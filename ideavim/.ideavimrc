@@ -54,11 +54,12 @@ nmap ge <action>(ReSharperGotoNextErrorInSolution)
 nmap gi <action>(GotoImplementation)
 "跳转基类
 nmap gb <action>(GotoSuperMethod)
+nmap gl <action>(GotoLine)
 
 "F1 for save all files
 nmap <F1> <action>(SaveAll)
 
-nmap <F2> <action>(PinActiveTab)
+" nmap <F2> <action>(PinActiveTab)
 
 " 切换标签页
 nmap L <action>(NextTab)
