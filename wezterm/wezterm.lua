@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
+local mux = wezterm.mux
 
 local config = {}
 
@@ -22,6 +23,39 @@ config.tab_max_width = 32
 config.front_end = 'WebGpu'
 config.animation_fps = 120
 config.max_fps = 120
+
+-- ========== Size ==========
+config.initial_cols = 110
+config.initial_rows = 30
+
+wezterm.on('gui-startup', function()
+  local _, _, window = mux.spawn_window({
+    width = config.initial_cols,
+    height = config.initial_rows,
+  })
+
+  wezterm.time.call_after(0, function()
+    local gui_window = window:gui_window()
+    if not gui_window then
+      return
+    end
+
+    local dims = gui_window:get_dimensions()
+    local screens = wezterm.gui.screens()
+
+    if not dims or not screens or not screens.active then
+      return
+    end
+
+    local screen = screens.active
+    local x = math.floor((screen.width - dims.pixel_width) / 2 + (screen.x or 0))
+    local y = math.floor((screen.height - dims.pixel_height) / 2 + (screen.y or 0))
+
+    gui_window:set_position(x, y)
+  end)
+end)
+
+
 
 -- ========== 字体 ==========
 config.font = wezterm.font_with_fallback({
@@ -235,15 +269,8 @@ end)
 
 -- ========== 智能窗口标题 ==========
 wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
-  local process = pane.foreground_process_name
-  local cwd_uri = pane:get_current_working_dir()
-  local cwd = ''
-
-  if cwd_uri then
-    cwd = tostring(cwd_uri):gsub('file://[^/]*', '')
-  end
-
-  return string.format('%s — %s', process or 'WezTerm', cwd ~= '' and cwd or 'terminal')
+  return pane.title or 'WezTerm'
 end)
+
 
 return config
