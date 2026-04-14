@@ -7,8 +7,9 @@ config.automatically_reload_config        = true
 config.check_for_updates                  = false
 config.window_close_confirmation          = 'NeverPrompt'
 config.adjust_window_size_when_changing_font_size = false
-config.scrollback_lines                   = 5000
-config.enable_scroll_bar                  = false
+config.scrollback_lines = 5000
+-- 内容超出视口时自动显示滚动条，方便快速定位位置
+config.enable_scroll_bar = true
 
 -- ── 性能 ──────────────────────────────────────────────────────────────────────
 -- WebGpu 是当前最佳渲染后端（跨平台 GPU 加速）

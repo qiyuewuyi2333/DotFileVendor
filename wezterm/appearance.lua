@@ -17,6 +17,8 @@ function M.apply_to_config(config)
       new_tab           = { bg_color = colors.crust,    fg_color = colors.blue },
       new_tab_hover     = { bg_color = colors.surface0, fg_color = colors.text,     italic = false },
     },
+    -- 滚动条配色：轨道用最深的 crust，滑块用 surface1，悬停时提亮到 blue
+    scrollbar_thumb = colors.surface1,
   }
 
   -- ── 窗口外观 ──────────────────────────────────────────────────────────────
